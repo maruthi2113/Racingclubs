@@ -1,0 +1,53 @@
+﻿@using Runner.Data.Enum
+@using Runner.Models.ViewModels
+@model CreateClubViewModel
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId"/>
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" placeholder="Enter Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" placeholder="Description">
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+    <div class="col">
+        <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="bg-black">
+            <option>--Select--</option>
+        </select>
+        <span asp-validation-for="ClubCategory" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.street"> Street</label>
+        <input asp-for="Address.street" class="form-control" placeholder="enter street">
+        <span asp-validation-for="Address.street" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.City">City</label>
+        <input asp-for="Address.City" class="form-control" placeholder="enter city">
+        <span asp-validation-for="Address.City" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.State">State</label>
+        <input asp-for="Address.State" class="form-control" placeholder="enter State">
+        <span asp-validation-for="Address.State" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address.Country">Country</label>
+        <input asp-for="Address.Country" class="form-control" placeholder="Enter Country">
+        <span asp-validation-for="Address.Country" class="text-danger"></span>
+
+    </div>
+    <div class="form-row form-group">
+        <div class="col">
+            <input asp-for="Image" type="file" class="form-control form-control-lg" placeholder="Image" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a class="btn btn-secondary" asp-action="Index">Back</a>
+</form>
